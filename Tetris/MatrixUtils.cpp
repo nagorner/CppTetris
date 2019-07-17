@@ -1,7 +1,10 @@
 #include "pch.h"
 #include <iostream>
 #include "MatrixUtils.h"
-
+#include <stdio.h> 
+#include <stdlib.h> 
+#include "TetFigures.h"
+#include "TetrisGameBoard.h"
 using namespace std;
 
 void Matrix_FillbyValue(int Matr[ARRAY_SIZE][ARRAY_SIZE], int x)
@@ -57,6 +60,7 @@ void Matrix_RotateAroundPoint(int Matr[ARRAY_SIZE][ARRAY_SIZE], double x, double
 		}
 	}
 }
+
 bool Matrix_IsRowFilledByValue(int Matr[ARRAY_SIZE][ARRAY_SIZE], int row, int valueToCheck) {
 	int count = 0;
 	for (int i = 0; i < ARRAY_SIZE; i++) {

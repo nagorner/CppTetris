@@ -24,9 +24,7 @@ int main()
 			cout << endl;
 			while (result)
 			{
-				
-				
-				
+									
 				cin >> direction;
 
 				if (direction == 'q') { Tetris_MoveFigureLeftOrRight(-1); Tetris_BoardPrint();  

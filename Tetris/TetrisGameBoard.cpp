@@ -10,6 +10,11 @@ int GAME_BOARD[ARRAY_SIZE][ARRAY_SIZE];
 #define CELL_ACTIVE 1
 #define CELL_EMPTY 0
 
+#define ANGLE_0 0
+#define ANGLE_90 1
+#define ANGLE_180 2
+#define ANGLE_270 2
+
 int CurrentFigure_RowPos=0;
 int CurrentFigure_ColumnPos=0;
 
