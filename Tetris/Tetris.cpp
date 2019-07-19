@@ -39,7 +39,9 @@ int main()
 					Tetris_BoardPrint();
 					cout << endl;
 				}
-				
+				if (direction == 'z') {
+					CurrentAngle++;
+				}
 				
 			}
 			result = 1;

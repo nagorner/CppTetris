@@ -12,25 +12,25 @@ int TETRIS_CURRENT_FIGURE = 0;
 int Tetris_SelectFigure()
 {
 	srand(time(NULL));
-	TETRIS_CURRENT_FIGURE = rand() % 5;
+	TETRIS_CURRENT_FIGURE = 2;
 	return TETRIS_CURRENT_FIGURE;
 }
 
 FIGURE_OBJECT Figure1 =
 {
 	{1,1,1,1},
-	{0,0,0,0}
+	{0,1,0,0}
 };
 
 FIGURE_OBJECT Figure2 =
 {
 	{ 1,1,1,0 },
-	{0, 1, 0,0}
+	{0, 1, 0,}
 };
 FIGURE_OBJECT Figure3 =
 {
-	{0,1,1,0 },
-	{0, 1,1,0 }
+	{1,1,0, 0},
+    {1,1,0,0 }
 };
 
 FIGURE_OBJECT Figure4 =
@@ -39,8 +39,8 @@ FIGURE_OBJECT Figure4 =
 	{ 0,1,1,0 }
 };
 FIGURE_OBJECT Figure5 = {
-	{0, 1,1,1 },
-	{0, 0,0,1 }
+	{ 1,1,1,1 },
+	{ 0,0,1,0 }
 };
 
 void Tetris_InitializeFigures()

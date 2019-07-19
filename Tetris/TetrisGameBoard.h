@@ -4,6 +4,7 @@
 extern int CurrentFigure_RowPos;
 extern int tHeight;
 extern int tWidth;
+extern int CurrentAngle;
 void TetrisGame_Initialize();
 void TetrisGame_Start();
 void TetrisGame_Over();
