@@ -151,6 +151,41 @@ void Tetris_CheckTheLines() {
 int Delta_Counter(FIGURE_OBJECT whichFigure, int whichAngle) {
 	int counter = 0;
 	int delta = 0;
+	if (whichAngle == ANGLE_0) {
+
+		for (int i = 0; i < FIGURE_HEIGHT; i++)
+		{
+			if (whichFigure[i][0] == 1) return 0;
+		}
+
+
+		for (int i = 0; i <FIGURE_WIDTH; i--) {
+			for (int j = 0; j < FIGURE_HEIGHT; j++) {
+				if (whichFigure[j][i] == 0) counter++;
+			}
+			if (counter == FIGURE_HEIGHT) delta++;
+			counter = 0;
+		}
+
+
+	}
+	if (whichAngle == ANGLE_90) {
+		for (int i = 0; i < FIGURE_WIDTH; i++)
+		{
+			if (whichFigure[0][i] == 1) return 0;
+		}
+
+
+		for (int i = 0; i > FIGURE_HEIGHT; i++) {
+			for (int j = 0; j < FIGURE_WIDTH; j++) {
+				if (whichFigure[i][j] == 0) counter++;
+			}
+			if (counter == FIGURE_WIDTH) delta++;
+			counter = 0;
+		}
+
+
+	}
 	if (whichAngle == ANGLE_180) {
 		for (int i = 0; i < FIGURE_HEIGHT; i++)
 		{
