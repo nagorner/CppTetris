@@ -168,6 +168,23 @@ int Delta_Counter(FIGURE_OBJECT whichFigure, int whichAngle) {
 
 
 	}
+	if (whichAngle == ANGLE_270) {
+		for (int i = 0; i < FIGURE_WIDTH; i++)
+		{
+			if (whichFigure[FIGURE_HEIGHT-1][i] == 1) return 0;
+		}
+
+
+		for (int i = FIGURE_HEIGHT - 1; i > 0; i--) {
+			for (int j = 0; j < FIGURE_WIDTH; j++) {
+				if (whichFigure[i][j] == 0) counter++;
+			}
+			if (counter == FIGURE_WIDTH) delta++;
+			counter = 0;
+		}
+
+
+	}
 	return delta;
 }
 int Gamma_Counter(FIGURE_OBJECT whichFigure, int whichAngle) {
