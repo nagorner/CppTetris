@@ -40,7 +40,7 @@ int main()
 					cout << endl;
 				}
 				if (direction == 'z') {
-					CurrentAngle++;
+					CurrentAngle_Change();
 				}
 				
 			}

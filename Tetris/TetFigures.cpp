@@ -12,14 +12,14 @@ int TETRIS_CURRENT_FIGURE = 0;
 int Tetris_SelectFigure()
 {
 	srand(time(NULL));
-	TETRIS_CURRENT_FIGURE = 2;
+	TETRIS_CURRENT_FIGURE = rand()%4;
 	return TETRIS_CURRENT_FIGURE;
 }
 
 FIGURE_OBJECT Figure1 =
 {
 	{1,1,1,1},
-	{0,1,0,0}
+	{0,0,0,0}
 };
 
 FIGURE_OBJECT Figure2 =
@@ -39,7 +39,7 @@ FIGURE_OBJECT Figure4 =
 	{ 0,1,1,0 }
 };
 FIGURE_OBJECT Figure5 = {
-	{ 1,1,1,1 },
+	{ 1,1,1,0 },
 	{ 0,0,1,0 }
 };
 
