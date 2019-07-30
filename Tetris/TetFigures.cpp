@@ -12,7 +12,7 @@ int TETRIS_CURRENT_FIGURE = 0;
 int Tetris_SelectFigure()
 {
 	srand(time(NULL));
-	TETRIS_CURRENT_FIGURE = rand()%4;
+	TETRIS_CURRENT_FIGURE = 1;
 	return TETRIS_CURRENT_FIGURE;
 }
 

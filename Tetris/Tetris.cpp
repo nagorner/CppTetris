@@ -11,7 +11,6 @@ using namespace std;
 int main()
 {  
 	    TetrisGame_Initialize();
-		Tetris_BoardPrint();
 		bool result=1;
 		char c;
 		char direction;
@@ -25,15 +24,17 @@ int main()
 									
 				cin >> direction;
 
-				if (direction == 'q') { Tetris_MoveFigureLeftOrRight(-1); Tetris_BoardPrint();  
+				if (direction == 'q') {
+					ClearScreen(); Tetris_MoveFigureLeftOrRight(-1); Tetris_BoardPrint();
 				cout << endl;
 				}
 
-				if (direction == 'w') { Tetris_MoveFigureLeftOrRight(1); Tetris_BoardPrint();
+				if (direction == 'w') {
+					ClearScreen(); Tetris_MoveFigureLeftOrRight(1); Tetris_BoardPrint();
 				cout << endl;
 				}
 				if(direction=='a'){
-					result = Tetris_GameProcess_MoveFigureToDown();
+					ClearScreen();  result = Tetris_GameProcess_MoveFigureToDown();
 					Tetris_BoardPrint();
 					cout << endl;
 				}

@@ -295,10 +295,7 @@ int Gamma_Counter(FIGURE_OBJECT whichFigure, int whichAngle) {
 
 	return gamma;
 }
-void CurrentAngle_Change() {
-	CurrentAngle++;
-	if (CurrentAngle == 4) CurrentAngle = 0;
-}
+
 bool Tetris_CanApplyFigureToBoard(int rowNumber, int columnNumber, FIGURE_OBJECT whichFigure, int whichAngle, int gamma, int delta)
 {
 	Tetris_TrueHeightAndWidth(whichFigure, whichAngle);
@@ -368,6 +365,69 @@ void Tetris_ApplyFigureToBoard(int rowNumber, int columnNumber, FIGURE_OBJECT wh
 					GAME_BOARD[FIGURE_WIDTH - j + rowNumber-1-gamma][i + columnNumber-delta] = CELL_ACTIVE;
 
 	}
+}
+
+bool Tetris_CanApplyFigureToAngleChange(int rowNumber, int columnNumber, FIGURE_OBJECT whichFigure, int whichAngle, int gamma, int delta) {
+	Tetris_TrueHeightAndWidth(whichFigure, whichAngle);
+	if (rowNumber + tHeight > ARRAY_SIZE || columnNumber + tWidth > ARRAY_SIZE || columnNumber < 0)
+		return false;
+	if (whichAngle == ANGLE_0) {
+		for (int i = 0; i < FIGURE_HEIGHT; i++)
+			for (int j = 0; j < FIGURE_WIDTH; j++)
+				if (whichFigure[i][j] != CELL_EMPTY)
+					if (GAME_BOARD[i + rowNumber - gamma][j + columnNumber - delta] != CELL_EMPTY)
+						return false;
+	}
+	if (whichAngle == ANGLE_270) {
+		for (int i = 0; i < FIGURE_HEIGHT; i++)
+			for (int j = 0; j < FIGURE_WIDTH; j++)
+				if (whichFigure[i][j] != CELL_EMPTY)
+					if (GAME_BOARD[j + rowNumber - gamma][FIGURE_HEIGHT - i - 1 + columnNumber - delta] != CELL_EMPTY)
+						return false;
+	}
+	if (whichAngle == ANGLE_180) {
+		for (int i = 0; i < FIGURE_HEIGHT; i++)
+			for (int j = 0; j < FIGURE_WIDTH; j++)
+				if (whichFigure[i][j] != CELL_EMPTY)
+					if (GAME_BOARD[FIGURE_HEIGHT - i + rowNumber - 1 - gamma][FIGURE_WIDTH - j - 1 + columnNumber - delta] != CELL_EMPTY)
+						return false;
+	}
+	if (whichAngle == ANGLE_90) {
+		for (int i = 0; i < FIGURE_HEIGHT; i++)
+			for (int j = 0; j < FIGURE_WIDTH; j++)
+				if (whichFigure[i][j] != CELL_EMPTY)
+					if (GAME_BOARD[FIGURE_WIDTH - j + rowNumber - 1 - gamma][i + columnNumber - delta] != CELL_EMPTY)
+						return false;
+	}
+	return true;
+}
+void CurrentAngle_Change() {
+	int gamma;
+	int delta;
+	bool result;
+	CurrentAngle++;
+	if (CurrentAngle == 4) CurrentAngle = 0;
+	gamma = Gamma_Counter(*CurrentFigure, CurrentAngle);
+	delta = Delta_Counter(*CurrentFigure, CurrentAngle);
+
+	/*result = Tetris_CanApplyFigureToBoard(CurrentFigure_RowPos, CurrentFigure_ColumnPos, *CurrentFigure, CurrentAngle, gamma, delta);
+		if (!result)
+		{
+			CurrentAngle--;
+		}
+*/
+		if (CurrentFigure_ColumnPos + tWidth >= ARRAY_SIZE && CurrentAngle == ANGLE_0 || CurrentAngle == ANGLE_180)
+		{
+			CurrentFigure_ColumnPos--;
+		}
+		if (CurrentFigure_ColumnPos <= 0) {
+			CurrentFigure_ColumnPos++;
+		}
+		if (CurrentFigure_RowPos + tHeight >= ARRAY_SIZE && CurrentAngle == ANGLE_90 || CurrentAngle == ANGLE_270)
+		{
+			CurrentFigure_RowPos--;
+		}
+		
 }
 void Tetris_MoveFigureLeftOrRight(int dir) {
 	if (CurrentAngle == 4) CurrentAngle = 0;
